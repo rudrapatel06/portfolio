@@ -8,9 +8,7 @@ const app = express();
 const PORT = 8080;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/portfolioDB')
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error(err));
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }) .then(() => console.log("MongoDB connected")) .catch(err => console.error(err));
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,4 +50,5 @@ app.get('/messages', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Portfolio running at http://localhost:${PORT}`));
+
 
