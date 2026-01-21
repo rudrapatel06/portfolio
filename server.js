@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Message = require('./models/Message');
+console.log("Connecting to:", process.env.MONGODB_URI);
 
 const app = express();
 const PORT = 8080;
@@ -55,6 +56,7 @@ app.get('/messages', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Portfolio running at http://localhost:${PORT}`));
+
 
 
 
