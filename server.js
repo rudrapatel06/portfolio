@@ -14,6 +14,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/portfolioDB')
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Root route 
+app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'index.html')); });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // 👈 handle JSON if needed
 
@@ -49,3 +52,4 @@ app.get('/messages', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Portfolio running at http://localhost:${PORT}`));
+
